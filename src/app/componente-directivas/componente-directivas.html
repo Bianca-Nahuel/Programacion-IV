@@ -1,0 +1,37 @@
+@if (isVisible()) {
+    <p> componente-directivas esta </p>
+}@else {
+    <p> componente-directivas no esta </p>
+}
+
+<button (click)="change()">Activar</button>
+
+
+@for (hijo of arrHijos(); track $index) {
+    <app-hijo [nombre]="hijo"></app-hijo>
+}
+<button (click)="add()">agregar</button>
+
+
+
+@defer(when isVisible()){
+    <p> componente-directivas esta </p>
+}@placeholder {
+    <p> componente-directivas no esta </p>
+}
+
+@defer(){
+    <p> componente-directivas esta </p>
+}@placeholder {
+    <p> componente-directivas no esta </p>
+}
+
+<p appDirectivaPerso color="red"> Hola </p>
+
+
+
+<p [class.rojo]="isGrande()"  (click)="count()" (auxclick)="reset()"> {{cont()}} </p>
+<p [class]="rojoOAzul()"  (click)="count()" (auxclick)="reset()"> {{cont()}} </p>
+
+
+<p *appDirectivaEstructura="isGrande()">Directiva</p>

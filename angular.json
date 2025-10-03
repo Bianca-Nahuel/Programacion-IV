@@ -6,7 +6,10 @@
     "app": {
       "projectType": "application",
       "schematics": {
-    
+        "@schematics/angular:component": {
+          "skipTests": true,
+          "standalone": true
+        }
       },
       "root": "",
       "sourceRoot": "src",
@@ -90,5 +93,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

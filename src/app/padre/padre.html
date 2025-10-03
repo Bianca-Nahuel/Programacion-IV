@@ -1,0 +1,10 @@
+<p>padre works!</p>
+
+
+<!-- (capto El Evento del output)   nombre="Defino el input" -->
+<app-hijo (eventoHijo)="alertHijo($event)" nombre="Hijo 1"></app-hijo>
+
+<!-- [] nos permita vincular un dato del hijo con un dato del padre - DataBinding -->
+<app-hijo (eventoHijo)="alertHijo($event)" [nombre]="nombreHijo1"></app-hijo>
+
+<app-hijo (eventoHijo)="alertHijo($event)" nombre="Hijo 3"></app-hijo>
