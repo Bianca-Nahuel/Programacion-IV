@@ -1,6 +1,7 @@
-import { Component, inject, input, OnInit } from '@angular/core';
-import { MiServicio } from '../../clase-servicios/mi-servicio';
+import { Component, inject, input, OnInit, signal, Signal, WritableSignal } from '@angular/core';
 import { Producto } from '../models/producto';
+import { ProductoService } from '../../clase-servicios/mi-servicio';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-produto-card',
@@ -9,15 +10,14 @@ import { Producto } from '../models/producto';
   styleUrl: './produto-card.css'
 })
 export class ProdutoCard implements OnInit{
+ 
   
-  miServicio = inject(MiServicio)
-  id = input<string>()
-  producto?:Producto  
-
+  id = input.required<string>()
+  productoService = inject(ProductoService)
+  producto?:Producto 
 
   ngOnInit(): void {
-    this.producto = this.miServicio.getProdductsById(Number(this.id()))
+    this.productoService.getProductoById(this.id()).subscribe( (p) => this.producto = p) 
   }
-
   
 }

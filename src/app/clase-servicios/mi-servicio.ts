@@ -1,13 +1,25 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable, Signal, signal } from '@angular/core';
 import { Producto } from '../clase-ruta/models/producto';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MiServicio {
-  productos:Producto[] = [{id:1,nombre: "producto-1"},{id:2 ,nombre: "producto-2"} ]
-
-  getProdductsById(id:number): Producto | undefined{
-    return this.productos.find((p)=> p.id === id)
+export class ProductoService {
+  htpp = inject(HttpClient) 
+  baseURL = "http://localhost:3000/Productos"
+ 
+  getProductos(){
+    return this.htpp.get<Producto[]>(this.baseURL)
   }
+
+  getProductoById(id:string){
+    return this.htpp.get<Producto>(this.baseURL+`/${id}`)
+  }
+
+  postProduct(obj:Partial<Producto>){
+    return this.htpp.post<Producto>(this.baseURL,obj)
+  }
+
 }

@@ -1,6 +1,8 @@
 <ul>
-    @for (p of productos; track p.id) {
-     <li (click)="navegar(p.id)">{{p.nombre}}</li>
+    @for (p of productos(); track p.id) {
+     <li [routerLink]="['/producto',p.id]">{{p.nombre}}</li>
     }
+
+    <button (click)="cargar()">Cargar</button>
 </ul>
 
