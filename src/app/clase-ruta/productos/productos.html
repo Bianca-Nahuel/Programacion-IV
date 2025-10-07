@@ -1,0 +1,6 @@
+<ul>
+    @for (p of productos; track p.id) {
+     <li (click)="navegar(p.id)">{{p.nombre}}</li>
+    }
+</ul>
+
